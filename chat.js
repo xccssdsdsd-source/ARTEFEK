@@ -90,6 +90,8 @@ async function generateReply({ message, history = [] }) {
 
   let lastError;
   for (const model of models) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 9000);
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
@@ -99,7 +101,8 @@ async function generateReply({ message, history = [] }) {
           'HTTP-Referer': 'https://artefekt.pl',
           'X-Title': 'Artefekt asystentka'
         },
-        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 })
+        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 }),
+        signal: controller.signal
       });
 
       if (!response.ok) {
@@ -116,7 +119,14 @@ async function generateReply({ message, history = [] }) {
       lastError = new Error('Empty model response');
       lastError.code = 'EMPTY_RESPONSE';
     } catch (err) {
-      lastError = err;
+      if (err.name === 'AbortError') {
+        lastError = new Error(`Model ${model} timed out`);
+        lastError.code = 'MODEL_TIMEOUT';
+      } else {
+        lastError = err;
+      }
+    } finally {
+      clearTimeout(timeout);
     }
   }
 

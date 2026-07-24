@@ -109,21 +109,19 @@ function renderLightboxImage(dir = 0) {
     updateLightboxMeta()
     return
   }
-  const outClass = dir > 0 ? 'is-turning-next' : 'is-turning-prev'
-  const inClass = dir > 0 ? 'is-entering-next' : 'is-entering-prev'
-  lightboxImg.classList.remove('is-entering-next', 'is-entering-prev')
-  lightboxImg.classList.add(outClass)
+  lightboxImg.classList.remove('is-entering')
+  lightboxImg.classList.add('is-turning')
   const img = new Image()
   img.onload = () => {
     setTimeout(() => {
       lightboxImg.src = src
-      lightboxImg.classList.remove(outClass)
-      lightboxImg.classList.add(inClass)
+      lightboxImg.classList.remove('is-turning')
+      lightboxImg.classList.add('is-entering')
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        lightboxImg.classList.remove(inClass)
+        lightboxImg.classList.remove('is-entering')
       }))
       updateLightboxMeta()
-    }, 240)
+    }, 300)
   }
   img.src = src
 }
@@ -206,7 +204,7 @@ lightbox?.addEventListener('wheel', (e) => {
   if (wheelLocked || Math.abs(e.deltaY) < 12) return
   wheelLocked = true
   stepLightbox(e.deltaY > 0 ? 1 : -1)
-  setTimeout(() => { wheelLocked = false }, 760)
+  setTimeout(() => { wheelLocked = false }, 980)
 }, { passive: false })
 
 let touchStartY = null
@@ -268,11 +266,15 @@ chatForm?.addEventListener('submit', async (e) => {
   const pending = appendTyping()
 
   try {
+    const controller = new AbortController()
+    const timeout = setTimeout(() => controller.abort(), 32000)
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: text, history })
+      body: JSON.stringify({ message: text, history }),
+      signal: controller.signal
     })
+    clearTimeout(timeout)
     const data = await res.json()
     pending.remove()
     if (data.reply) {
