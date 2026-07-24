@@ -1,0 +1,21 @@
+:root{--bg:#fafafa;--accent:#2b6cb0}
+body{font-family:system-ui,Segoe UI,Roboto,Arial;background:var(--bg);margin:0;color:#222}
+.site-header{display:flex;align-items:center;gap:12px;padding:16px;background:#fff;border-bottom:1px solid #eee}
+.site-header .logo{height:48px}
+.layout{display:grid;grid-template-columns:1fr 360px;gap:24px;max-width:1100px;margin:28px auto;padding:0 16px}
+.hero img{width:100%;height:auto;border-radius:8px;display:block}
+.content{background:#fff;padding:18px;border-radius:8px;border:1px solid #eee}
+.gallery{display:flex;gap:8px;margin:12px 0}
+.gallery img{width:100%;max-width:220px;height:auto;border-radius:6px;object-fit:cover}
+#chat{border:1px solid #eee;padding:12px;border-radius:6px}
+#messages{height:200px;overflow:auto;border:1px solid #f1f1f1;padding:8px;margin-bottom:8px;border-radius:4px;background:#fff}
+.msg{padding:8px;margin:6px 0;border-radius:6px}
+.msg.user{background:#e6f2ff;text-align:right}
+.msg.assistant{background:#f1f7ed}
+.msg.error{background:#ffecec;border:1px solid #ffbdbd}
+.msg.pending{background:#fff3cd;color:#6b4b00}
+form{display:flex;gap:8px}
+input#msg{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px}
+button{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:6px}
+
+@media (max-width:900px){.layout{grid-template-columns:1fr}}

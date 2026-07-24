@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Artefekt — Podgląd</title>
+  <meta name="description" content="Studio projektowania wnętrz Artefekt — podgląd strony." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Artefekt — Studio projektowania wnętrz" />
+  <meta property="og:description" content="Artefekt — estetyka i funkcjonalność. Podgląd projektu." />
+  <meta property="og:image" content="/assets/hero.jpg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="stylesheet" href="/preview/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <img class="logo" src="/assets/logo-light.png" alt="Artefekt logo" onerror="this.src='/assets/logo-dark.png'" />
+    <h1>Artefekt — Podgląd</h1>
+  </header>
+
+  <main class="layout">
+    <section class="hero">
+      <img src="/assets/hero.jpg" alt="hero"/>
+    </section>
+
+    <section class="content">
+      <h2>Krótkie demo</h2>
+      <p>Strona została uporządkowana do podglądu. Grafiki znajdują się w katalogu projektu i są dostępne pod ścieżką <code>/assets/</code>.</p>
+
+      <div class="gallery">
+        <!-- Show a few representative images only to avoid overload -->
+        <img src="/assets/kitchen.jpg" alt="kitchen"/>
+        <img src="/assets/bedroom.jpg" alt="bedroom"/>
+        <img src="/assets/living.jpg" alt="living"/>
+      </div>
+
+      <h3>Chatbot (wymaga klucza API)</h3>
+      <div id="chat">
+        <div id="messages"></div>
+        <form id="chatForm">
+          <input id="msg" placeholder="Napisz wiadomość..." autocomplete="off" />
+          <button>Wyślij</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/preview/client.js"></script>
+</body>
+</html>

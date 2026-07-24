@@ -1,0 +1,22 @@
+{
+  "name": "artefek",
+  "version": "1.0.0",
+  "description": "Artefekt — strona studia projektowania wnętrz",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "preview": "node preview/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
+}

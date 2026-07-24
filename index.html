@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Artefekt — Studio projektowania wnętrz | Wrocław</title>
+<meta name="description" content="Artefekt — studio projektowania wnętrz z Wrocławia. Projekty koncepcyjne i kompleksowe, konsultacje, nadzór autorski. Estetyka i funkcjonalność bez kosztownych błędów." />
+
+<meta property="og:title" content="Artefekt — Studio projektowania wnętrz" />
+<meta property="og:description" content="Estetyka i funkcjonalność. Studio projektowania wnętrz z Wrocławia." />
+<meta property="og:image" content="assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#faf6f2" />
+
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" />
+<link rel="icon" href="assets/favicon.png" sizes="256x256" />
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        clay: { 50:'#faf6f2', 100:'#f3e9df', 200:'#e6cfb8', 300:'#d6ad8b', 400:'#c08a5f', 500:'#a86c42', 600:'#8a5535', 700:'#6d422b', 800:'#4a2d1f', 900:'#2c1a13' },
+        ink: { 50:'#f6f5f3', 100:'#e8e5e0', 400:'#8a8378', 600:'#4a453d', 800:'#2a2621', 900:'#1a1713' }
+      },
+      fontFamily: {
+        display: ['"Fraunces"','serif'],
+        sans: ['"Inter"','system-ui','sans-serif']
+      },
+      boxShadow: {
+        soft: '0 1px 2px rgba(42,26,19,0.04), 0 8px 24px -8px rgba(74,45,31,0.18), 0 2px 6px -2px rgba(74,45,31,0.12)',
+        card: '0 2px 4px rgba(42,26,19,0.03), 0 12px 32px -12px rgba(74,45,31,0.20)'
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="index.css" />
+</head>
+<body class="bg-clay-50 text-ink-800 font-sans antialiased">
+
+<a href="#main" class="skip-link">Przejdź do treści</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Artefekt — strona główna">
+      <img src="assets/logo-mark-light.png" alt="Artefekt" class="brand-logo brand-logo--light" />
+      <img src="assets/logo-mark-dark.png" alt="" class="brand-logo brand-logo--dark" />
+    </a>
+    <nav class="nav" aria-label="Główna nawigacja">
+      <a href="#team">Zespół</a>
+      <a href="#services">Usługi</a>
+      <a href="#projects">Realizacje</a>
+      <a href="#process">Proces</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+    <a href="#assistant" class="btn-primary btn-sm hidden-mobile">Zapytaj asystentkę</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="navMobile" aria-label="Nawigacja mobilna">
+    <a href="#services">Usługi</a>
+    <a href="#projects">Realizacje</a>
+    <a href="#process">Proces</a>
+    <a href="#team">Zespół</a>
+    <a href="#contact">Kontakt</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section id="top" class="hero">
+    <picture>
+      <source srcset="assets/living-760.webp 760w, assets/living-1100.webp 1100w, assets/living-1600.webp 1600w, assets/living-1920.webp 1920w" sizes="100vw" type="image/webp" />
+      <img src="assets/living-1600.webp" alt="Przestronny salon z jadalnią zaprojektowany przez studio Artefekt — ciepłe drewno, marmurowy kominek i mosiężne oprawy oświetleniowe" class="hero-img" fetchpriority="high" />
+    </picture>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner wrap">
+      <p class="eyebrow">Studio projektowania wnętrz · Wrocław</p>
+      <h1>Wnętrza, które łączą <em>estetykę</em> i funkcjonalność</h1>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#assistant">Zapytaj asystentkę</a>
+        <a class="btn-ghost" href="#projects">Zobacz realizacje</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="assistant-section" data-reveal>
+    <div class="wrap assistant-wrap">
+      <div class="team-compact">
+        <div class="team-compact-photo">
+          <img src="assets/team-760.webp" srcset="assets/team-480.webp 480w, assets/team-760.webp 760w" sizes="(max-width:860px) 100vw, 30vw" alt="Alicja Wątroba i Joanna Markiewicz — założycielki studia Artefekt" loading="lazy" />
+        </div>
+        <p class="eyebrow eyebrow-dark">Zespół</p>
+        <h2>Ludzie, z którymi porozmawiasz o Twoim wnętrzu</h2>
+        <p class="team-intro">Alicja i Joanna od blisko dwóch dekad projektują wnętrza, które łączą estetykę z realiami wykonawczymi.</p>
+        <div class="person-list person-list--compact">
+          <div class="person">
+            <div>
+              <h3>Alicja Wątroba</h3>
+              <p class="team-role">Architektka wnętrz</p>
+              <a href="tel:+48693294393">693 294 393</a>
+            </div>
+          </div>
+          <div class="person">
+            <div>
+              <h3>Joanna Markiewicz</h3>
+              <p class="team-role">Architektka wnętrz</p>
+              <a href="tel:+48691222770">691 222 770</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="assistant" class="assistant-intro">
+        <p class="eyebrow eyebrow-dark">Asystent Artefekt.pl</p>
+        <h2>Zadaj mi dowolne pytanie</h2>
+        <p class="assistant-lead">Zapytaj o proces, dobór usługi, materiały czy showroom — odpowiem od razu. Jeśli temat wymaga architektki, pomogę Ci się z nią umówić.</p>
+        <div class="assistant-chips">
+          <button type="button" class="chip" data-prompt="Jak wygląda proces współpracy krok po kroku?">Jak wygląda proces?</button>
+          <button type="button" class="chip" data-prompt="Jakiej usługi potrzebuję do urządzenia jednego pokoju?">Jaką usługę wybrać?</button>
+          <button type="button" class="chip" data-prompt="Chciałbym/chciałabym umówić konsultację, jak to zrobić?">Umów konsultację</button>
+          <button type="button" class="chip" data-prompt="Czym jest showroom „Od próbek do decyzji”?">Co to showroom?</button>
+        </div>
+
+        <div class="chat-panel" id="chatPanel">
+          <div class="chat-panel-head">
+            <span class="mac-dots"><span></span><span></span><span></span></span>
+            <h3>Asystent Artefekt.pl</h3>
+          </div>
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-msg chat-msg--assistant">Cześć! Zadaj mi dowolne pytanie o proces, usługi lub materiały — chętnie pomogę, a w razie potrzeby umówię kontakt z architektką.</div>
+          </div>
+          <form class="chat-form" id="chatForm">
+            <input id="chatInput" class="chat-input" type="text" placeholder="Napisz wiadomość…" autocomplete="off" />
+            <button class="chat-send" type="submit" aria-label="Wyślij wiadomość">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20 20 12 4 4v6l11 2-11 2v6Z"/></svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="marquee-strip" aria-hidden="true">
+    <div class="wrap marquee-inner">
+      <span>Blisko dwie dekady doświadczenia</span>
+      <span>·</span>
+      <span>Projekty mieszkalne i komercyjne</span>
+      <span>·</span>
+      <span>Nadzór autorski</span>
+      <span>·</span>
+      <span>Showroom „Od próbek do decyzji”</span>
+    </div>
+  </section>
+
+  <section class="stats-strip wrap" data-reveal>
+    <div class="stat" data-count data-count-to="544">
+      <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8.5" r="3.2"/><path d="M2.8 19.5c0-3.2 2.7-5.6 6.2-5.6s6.2 2.4 6.2 5.6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.8 14.2c2.7.3 4.6 2.4 4.6 5.3"/></svg></span>
+      <span class="stat-num"><span class="stat-num-value">0</span></span>
+      <span class="stat-label">klientów</span>
+    </div>
+    <div class="stat" data-count data-count-to="12584" data-suffix="+">
+      <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 9h11v5.5A4.5 4.5 0 0 1 11.5 19h-2A4.5 4.5 0 0 1 5 14.5V9Z"/><path d="M16 10.5h1.5a2.3 2.3 0 0 1 0 4.6H16"/><path d="M8 4.5c-.6.6-.6 1.2 0 1.8M11.3 4.5c-.6.6-.6 1.2 0 1.8"/></svg></span>
+      <span class="stat-num"><span class="stat-num-value">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-label">wypitej kawy</span>
+    </div>
+    <div class="stat" data-count data-count-to="17" data-suffix="+">
+      <span class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="4.5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17"/><path d="M8 3v3M16 3v3"/><path d="m8 14 2.3 2.3L15.5 11"/></svg></span>
+      <span class="stat-num"><span class="stat-num-value">0</span><span class="stat-suffix">+</span></span>
+      <span class="stat-label">lat pracy</span>
+    </div>
+  </section>
+
+  <section id="services" class="section section--tan" data-reveal>
+    <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark">Usługi</p>
+      <h2>Dopasowany zakres wsparcia do Twoich potrzeb</h2>
+    </div>
+    <div class="services-list" data-stagger>
+      <article class="service-row">
+        <span class="service-num">01</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V8.5l8-5.2 8 5.2V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1Z"/><path d="M9 11h6"/></svg>
+        </div>
+        <div class="service-text">
+          <h3>Projekt koncepcyjny</h3>
+          <p>Układ funkcjonalny, kierunek stylistyczny i wizualizacje pomieszczeń.</p>
+        </div>
+      </article>
+      <article class="service-row">
+        <span class="service-num">02</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 19.5V6a2 2 0 0 1 2-2h7.5L19 8.5V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M14 4v4.5h4.5"/><path d="M8.5 13h7M8.5 16.5h4.5"/></svg>
+        </div>
+        <div class="service-text">
+          <h3>Projekt kompleksowy</h3>
+          <p>Pełne prowadzenie inwestycji: dokumentacja wykonawcza i dobór materiałów.</p>
+        </div>
+      </article>
+      <article class="service-row">
+        <span class="service-num">03</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 7.5 12 3l8 4.5M4 7.5v9L12 21m-8-4.5L12 12m0 9 8-4.5v-9M12 12l8-4.5M12 12v9"/></svg>
+        </div>
+        <div class="service-text">
+          <h3>Zmiany lokatorskie</h3>
+          <p>Wsparcie w rozmowach z deweloperem i przesunięciach punktów instalacyjnych.</p>
+        </div>
+      </article>
+      <article class="service-row">
+        <span class="service-num">04</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12h1.7l1.3-3 2 6 1.3-3H16.5"/></svg>
+        </div>
+        <div class="service-text">
+          <h3>Konsultacje online</h3>
+          <p>Rozmowa z architektem niezależnie od lokalizacji inwestycji.</p>
+        </div>
+      </article>
+      <article class="service-row">
+        <span class="service-num">05</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="9" r="5.2"/><circle cx="16.3" cy="15.5" r="3.3"/><path d="M14 13.3 10.8 11"/></svg>
+        </div>
+        <div class="service-text">
+          <h3>„Od próbek do decyzji”</h3>
+          <p>Konsultacja materiałowa w showroomie — dotknij, porównaj, zdecyduj.</p>
+        </div>
+      </article>
+      <article class="service-row">
+        <span class="service-num">06</span>
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V10.5L12 4l8 6.5V20"/><path d="M9 20v-5.5h6V20"/><path d="M4 20h16"/></svg>
+        </div>
+        <div class="service-text">
+          <h3>Nadzór autorski</h3>
+          <p>Kontrola zgodności realizacji z projektem na etapie wykonawstwa.</p>
+        </div>
+      </article>
+    </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section section--white" data-reveal>
+    <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow eyebrow-dark">Realizacje</p>
+      <h2>Wybrane wnętrza z naszych projektów</h2>
+      <p class="section-lead">Podgląd naszych wizualizacji — kliknij zdjęcie, aby zobaczyć je w powiększeniu, i przewijaj scrollem między kolejnymi.</p>
+    </div>
+    <div class="gallery-grid" data-stagger>
+      <button type="button" class="gallery-item" data-lightbox data-group="kitchen" data-caption="Kuchnia — realizacja Artefekt" data-cover-images="assets/kitchen-1-1100.webp,assets/kitchen-4-1100.webp,assets/kitchen-5-1100.webp,assets/kitchen-3-1100.webp,assets/kitchen-7-1100.webp" data-images="assets/kitchen-1-1920.webp,assets/kitchen-4-1920.webp,assets/kitchen-5-1920.webp,assets/kitchen-3-1100.webp,assets/kitchen-7-1100.webp">
+        <img src="assets/kitchen-1-1100.webp" srcset="assets/kitchen-1-480.webp 480w, assets/kitchen-1-760.webp 760w, assets/kitchen-1-1100.webp 1100w" sizes="(max-width:640px) 50vw, 33vw" alt="Nowoczesna kuchnia z wyspą — realizacja Artefekt" loading="lazy" />
+        <span class="gallery-tag">Kuchnia</span>
+        <span class="gallery-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 15 5-5 4 4 5-6 4 5"/></svg>5</span>
+      </button>
+      <button type="button" class="gallery-item" data-lightbox data-group="bedroom" data-caption="Sypialnia — realizacja Artefekt" data-cover-images="assets/bedroom-3-1100.webp,assets/bedroom-5-1100.webp,assets/bedroom-1-1100.webp,assets/bedroom-2-1100.webp" data-images="assets/bedroom-3-1920.webp,assets/bedroom-5-1920.webp,assets/bedroom-1-1100.webp,assets/bedroom-2-1100.webp">
+        <img src="assets/bedroom-3-1100.webp" srcset="assets/bedroom-3-480.webp 480w, assets/bedroom-3-760.webp 760w, assets/bedroom-3-1100.webp 1100w" sizes="(max-width:640px) 50vw, 33vw" alt="Sypialnia w stonowanych barwach — realizacja Artefekt" loading="lazy" />
+        <span class="gallery-tag">Sypialnia</span>
+        <span class="gallery-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 15 5-5 4 4 5-6 4 5"/></svg>4</span>
+      </button>
+      <button type="button" class="gallery-item" data-lightbox data-group="bathroom" data-caption="Łazienka — realizacja Artefekt" data-cover-images="assets/bathroom-6-1100.webp,assets/bathroom-1-1100.webp,assets/bathroom-2-1100.webp,assets/bathroom-5-1100.webp" data-images="assets/bathroom-6-1920.webp,assets/bathroom-1-1100.webp,assets/bathroom-2-1100.webp,assets/bathroom-5-1100.webp">
+        <img src="assets/bathroom-6-1100.webp" srcset="assets/bathroom-6-480.webp 480w, assets/bathroom-6-760.webp 760w, assets/bathroom-6-1100.webp 1100w" sizes="(max-width:640px) 50vw, 33vw" alt="Łazienka w minimalistycznym stylu — realizacja Artefekt" loading="lazy" />
+        <span class="gallery-tag">Łazienka</span>
+        <span class="gallery-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 15 5-5 4 4 5-6 4 5"/></svg>4</span>
+      </button>
+      <button type="button" class="gallery-item" data-lightbox data-group="living" data-caption="Salon — realizacja Artefekt" data-cover-images="assets/living-1-1100.webp,assets/living-1600.webp" data-images="assets/living-1-1920.webp,assets/living-1920.webp">
+        <img src="assets/living-1-1100.webp" srcset="assets/living-1-480.webp 480w, assets/living-1-760.webp 760w, assets/living-1-1100.webp 1100w" sizes="(max-width:640px) 50vw, 33vw" alt="Przestronny salon z jadalnią — realizacja Artefekt" loading="lazy" />
+        <span class="gallery-tag">Salon</span>
+        <span class="gallery-count"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="m3 15 5-5 4 4 5-6 4 5"/></svg>2</span>
+      </button>
+      <button type="button" class="gallery-item" data-lightbox data-group="hallway" data-images="assets/hallway-1920.webp" data-caption="Przedpokój z lustrami w pudrowych barwach">
+        <img src="assets/hallway-1100.webp" srcset="assets/hallway-760.webp 760w, assets/hallway-1100.webp 1100w" sizes="(max-width:640px) 50vw, 33vw" alt="Przedpokój z lustrami w pudrowych barwach" loading="lazy" />
+        <span class="gallery-tag">Przedpokój</span>
+      </button>
+      <button type="button" class="gallery-item" data-lightbox data-group="kids" data-images="assets/kids-1920.webp" data-caption="Pokój dziecięcy z antresolą i zjeżdżalnią">
+        <img src="assets/kids-1100.webp" srcset="assets/kids-760.webp 760w, assets/kids-1100.webp 1100w" sizes="(max-width:640px) 50vw, 33vw" alt="Pokój dziecięcy z antresolą i zjeżdżalnią" loading="lazy" />
+        <span class="gallery-tag">Pokój dziecięcy</span>
+      </button>
+    </div>
+    <a class="gallery-more" href="https://instagram.com/artefekt_studio" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+      Więcej realizacji na Instagramie
+    </a>
+    </div>
+  </section>
+
+  <section id="process" class="process-section" data-reveal>
+    <div class="wrap process-wrap">
+      <div class="process-media">
+        <img src="assets/bedroom-3-1600.webp" srcset="assets/bedroom-3-760.webp 760w, assets/bedroom-3-1100.webp 1100w, assets/bedroom-3-1600.webp 1600w" sizes="(max-width:860px) 100vw, 54vw" alt="Sypialnia zaprojektowana przez Artefekt — stonowane barwy i oświetlenie punktowe" loading="lazy" />
+      </div>
+      <div class="process-content">
+        <p class="eyebrow eyebrow-dark">Proces</p>
+        <h2>Jak wygląda współpraca</h2>
+        <p class="process-lead">Mniej jeżdżenia, mniej stresu — wszystko w jednym miejscu. Od pierwszej rozmowy po odbiór dopilnujemy, żeby żadna decyzja nie kosztowała Cię więcej, niż powinna.</p>
+        <ol class="steps">
+          <li><span class="step-num">01</span><div><h3>Rozmowa i brief</h3><p>Poznajemy Twoje potrzeby, styl życia i realne ograniczenia inwestycji — żebyś nie płacił(a) za poprawki później.</p></div></li>
+          <li><span class="step-num">02</span><div><h3>Koncepcja</h3><p>Układ funkcjonalny, kierunek stylistyczny i wizualizacje — widzisz efekt, zanim zapadnie jakakolwiek decyzja.</p></div></li>
+          <li><span class="step-num">03</span><div><h3>Dokumentacja</h3><p>Kompletny projekt wykonawczy — ekipa budowlana wie dokładnie, co i jak robić, bez zgadywania na budowie.</p></div></li>
+          <li><span class="step-num">04</span><div><h3>Realizacja i nadzór</h3><p>Pomagamy dobrać wykonawców i materiały, a na miejscu pilnujemy zgodności z projektem.</p></div></li>
+        </ol>
+        <a class="process-more" href="#assistant">Dowiedz się więcej u asystentki <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="showroom-section" data-reveal>
+    <div class="wrap showroom-wrap">
+      <div class="showroom-content">
+        <p class="eyebrow eyebrow-light">Showroom</p>
+        <h2>Od próbek do decyzji</h2>
+        <p>Zdjęcia i wizualizacje to jedno — ale fornir, kamień czy tkanina inaczej wyglądają w dłoni niż na ekranie. Dlatego zapraszamy do naszego showroomu we Wrocławiu, zanim podejmiesz decyzję.</p>
+        <ul class="showroom-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>Dotkniesz i porównasz próbki materiałów obok siebie</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>Porozmawiasz na miejscu z architektką o Twoim wnętrzu</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 6 9 17l-5-5"/></svg>Wyjdziesz z konkretną decyzją, nie z kolejnymi wątpliwościami</li>
+        </ul>
+        <div class="showroom-actions">
+          <a class="btn-primary" href="#assistant">Umów wizytę</a>
+          <a class="showroom-instagram" href="https://instagram.com/artefekt_studio" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+            Zobacz na Instagramie
+          </a>
+        </div>
+      </div>
+      <div class="showroom-media">
+        <img src="assets/bathroom-6-1600.webp" srcset="assets/bathroom-6-760.webp 760w, assets/bathroom-6-1100.webp 1100w, assets/bathroom-6-1600.webp 1600w" sizes="(max-width:860px) 100vw, 50vw" alt="Łazienka — realizacja Artefekt, showroom Wrocław" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials-section" data-reveal>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow eyebrow-dark">Opinie</p>
+        <h2>Co mówią klienci Artefekt</h2>
+      </div>
+    </div>
+    <div class="testimonial-carousel">
+      <div class="testimonial-track" id="testimonialTrack">
+        <article class="testimonial-card">
+          <span class="testimonial-quote" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 6.5C6 8 4.2 10.6 4.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2L9.3 6.5Zm9 0C15 8 13.2 10.6 13.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2l-1.6-1Z"/></svg></span>
+          <div class="testimonial-stars" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg></div>
+          <p>Gdyby wszyscy pracowali z taką pasją i zaangażowaniem jak dziewczyny z Artefekt to świat byłby piękniejszy! Z czystym sumieniem polecam. Dla mnie wykonały od a do z aranżacje mieszkania od projektu aż po wykończenie, łącznie z nadzorowaniem prac projektowych, zakupami itp. Polecam w 100%</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true">DN</span>
+            <span>Damian N.</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <span class="testimonial-quote" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 6.5C6 8 4.2 10.6 4.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2L9.3 6.5Zm9 0C15 8 13.2 10.6 13.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2l-1.6-1Z"/></svg></span>
+          <div class="testimonial-stars" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg></div>
+          <p>Panie Alicja i Joanna to wyjątkowo godne polecenia projektantki, podchodzą do swojej pracy z wielką pasją i zaangażowaniem. Profesjonalnie i ergonomicznie zaprojektowane biuro. Serdecznie dziękuję, z pewnością będę polecał znajomym.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true">KL</span>
+            <span>Krzysztof L.</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <span class="testimonial-quote" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 6.5C6 8 4.2 10.6 4.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2L9.3 6.5Zm9 0C15 8 13.2 10.6 13.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2l-1.6-1Z"/></svg></span>
+          <div class="testimonial-stars" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg></div>
+          <p>Praca z dziewczynami z ArtEfekt była dla nas świetnym przeżyciem! Dużo rozmów zaowocowało projektem, który idealnie wpasował się w nasze potrzeby i oczekiwania. Dziewczyny odpowiedziały na nasz milion pytań i podpowiedziały nam sprawdzonych wykonawców. Zdecydowanie polecamy!</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true">DZ</span>
+            <span>Damian Z.</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <span class="testimonial-quote" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 6.5C6 8 4.2 10.6 4.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2L9.3 6.5Zm9 0C15 8 13.2 10.6 13.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2l-1.6-1Z"/></svg></span>
+          <div class="testimonial-stars" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg></div>
+          <p>Szukałem oryginalnego pomysłu na aranżację i znalazłem go właśnie w ArtEfekt. Zespół pracował wyjątkowo efektywnie i terminowo. Pełen profesjonalizm oraz wrażliwość estetyczna spowodowały, że efekt końcowy przerósł moje oczekiwania. Kolejny projekt z pewnością zrealizuję z tym biurem.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true">RD</span>
+            <span>Rafał D.</span>
+          </div>
+        </article>
+        <article class="testimonial-card">
+          <span class="testimonial-quote" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.3 6.5C6 8 4.2 10.6 4.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2L9.3 6.5Zm9 0C15 8 13.2 10.6 13.2 14c0 2.4 1.6 4 3.7 4 1.9 0 3.3-1.4 3.3-3.3 0-1.8-1.3-3.1-3-3.1-.3 0-.5 0-.7.1.3-1.8 1.7-3.4 3.4-4.2l-1.6-1Z"/></svg></span>
+          <div class="testimonial-stars" aria-hidden="true"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.8l-5.2 2.9 1-5.9-4.3-4.1 5.9-.8L10 1.5Z"/></svg></div>
+          <p>Serdecznie polecam Team ArtEfekt! Przemiłe osoby, które chętnie i z pasją oddają się swojemu zajęciu. Ja właśnie wróciłam z prośbą o wykonanie kolejnego projektu wnętrz.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true">KA</span>
+            <span>Katarzyna A.</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section" data-reveal>
+    <div class="wrap contact-wrap">
+      <div class="contact-info">
+        <p class="eyebrow eyebrow-light">Kontakt</p>
+        <h2>Porozmawiajmy o Twoim wnętrzu</h2>
+        <p class="contact-lead">Wypełnij krótki formularz albo napisz, zadzwoń lub wróć do asystentki AI na górze strony — odpowiemy najszybciej, jak to możliwe.</p>
+        <a href="#assistant" class="btn-ghost btn-ghost--dark btn-sm contact-chat-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="16" height="16"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
+          Wróć do czatu
+        </a>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cfName">Imię i nazwisko</label>
+              <input id="cfName" name="name" type="text" required autocomplete="name" placeholder="Jak się do Ciebie zwracać?" />
+            </div>
+            <div class="form-field">
+              <label for="cfEmail">E-mail</label>
+              <input id="cfEmail" name="email" type="email" required autocomplete="email" placeholder="ty@przyklad.pl" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="cfPhone">Telefon <span class="form-optional">(opcjonalnie)</span></label>
+              <input id="cfPhone" name="phone" type="tel" autocomplete="tel" placeholder="600 000 000" />
+            </div>
+            <div class="form-field">
+              <label for="cfRoom">Rodzaj wnętrza</label>
+              <select id="cfRoom" name="room">
+                <option value="Całe mieszkanie/dom">Całe mieszkanie / dom</option>
+                <option value="Kuchnia">Kuchnia</option>
+                <option value="Sypialnia">Sypialnia</option>
+                <option value="Łazienka">Łazienka</option>
+                <option value="Salon">Salon</option>
+                <option value="Inne">Inne</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="cfMessage">Wiadomość</label>
+            <textarea id="cfMessage" name="message" rows="4" required placeholder="Opowiedz nam krótko o swoim projekcie…"></textarea>
+          </div>
+          <button type="submit" class="btn-primary form-submit">
+            Wyślij zapytanie
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M4 20 20 12 4 4v6l11 2-11 2v6Z"/></svg>
+          </button>
+          <p class="form-note">Otworzy Twój program pocztowy z gotową wiadomością do studio@artefekt.pl.</p>
+        </form>
+      </div>
+
+      <div class="contact-side">
+        <div class="contact-map-card">
+          <p class="eyebrow eyebrow-light">Odwiedź nas</p>
+          <h3>Showroom Artefekt</h3>
+          <p>Zwycięska 3, lokal U8<br />53-033 Wrocław</p>
+          <a class="btn-primary btn-sm" href="https://maps.google.com/?q=Zwyci%C4%99ska+3+U8+Wroc%C5%82aw" target="_blank" rel="noopener">Wyznacz trasę</a>
+          <a class="contact-instagram" href="https://instagram.com/artefekt_studio" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="0.8" fill="currentColor" stroke="none"/></svg>
+            @artefekt_studio
+          </a>
+        </div>
+        <div class="contact-map-embed">
+          <iframe src="https://www.google.com/maps?q=Zwyci%C4%99ska+3+U8+Wroc%C5%82aw&output=embed" title="Mapa — showroom Artefekt, Wrocław" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="contact-bottom-grid">
+          <dl class="contact-list">
+            <div><dt>E-mail</dt><dd><a href="mailto:studio@artefekt.pl">studio@artefekt.pl</a></dd></div>
+            <div><dt>Godziny</dt><dd>pon.–pt.<br />09:00–16:00</dd></div>
+            <div><dt>Telefon</dt><dd><a href="tel:+48693294393">693 294 393</a><br />(Alicja)</dd><dd><a href="tel:+48691222770">691 222 770</a> (Joanna)</dd></div>
+          </dl>
+          <div class="mini-calendar" id="miniCalendar">
+            <div class="mini-calendar-head">
+              <p class="mini-calendar-title">Umów wizytę</p>
+              <p class="mini-calendar-month" id="calMonthLabel"></p>
+            </div>
+            <div class="mini-calendar-dow">
+              <span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span><span>Nd</span>
+            </div>
+            <div class="mini-calendar-grid" id="calGrid"></div>
+            <p class="mini-calendar-note">Wybierz dzień — uzupełnimy za Ciebie wiadomość w formularzu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lightbox" id="lightbox" hidden>
+  <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Zamknij podgląd">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Poprzednie zdjęcie">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5 8 12l7 7"/></svg>
+  </button>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Następne zdjęcie">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg>
+  </button>
+  <figure>
+    <img id="lightboxImg" src="" alt="" />
+    <figcaption id="lightboxCaption"></figcaption>
+  </figure>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-wrap">
+    <img src="assets/logo-mark-light.png" alt="" role="presentation" class="footer-mark" />
+    <small>© <span id="year"></span> Artefekt — wszystkie prawa zastrzeżone</small>
+    <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+  </div>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
