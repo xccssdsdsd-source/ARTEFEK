@@ -41,15 +41,7 @@ Pytania kwalifikujące zadawaj po jednym lub dwa: typ inwestycji, lokalizacja, p
 
 Format odpowiedzi: najpierw odpowiedź, potem najwyżej jedno pytanie. Zwykle od dwóch do sześciu krótkich zdań. Bez presji sprzedażowej.`;
 
-const FALLBACK_MODELS = [
-  'openai/gpt-oss-20b:free',
-  'nvidia/nemotron-3-nano-30b-a3b:free',
-  'google/gemma-4-31b-it:free'
-];
-
-function extractOutputText(data) {
-  return (data?.choices?.[0]?.message?.content || '').trim();
-}
+const REQUEST_TIMEOUT_MS = 8000;
 
 function normalizeHistory(history) {
   if (!Array.isArray(history)) return [];
@@ -63,14 +55,107 @@ function normalizeHistory(history) {
     .filter((item) => item.content);
 }
 
-async function generateReply({ message, history = [] }) {
-  const apiKey = process.env.OPENROUTER_API_KEY;
-  if (!apiKey) {
-    const error = new Error('Chatbot API is not configured');
-    error.code = 'CHATBOT_NOT_CONFIGURED';
-    throw error;
+async function fetchJson(url, options) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    const text = await response.text();
+    let data;
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch {
+      data = { raw: text };
+    }
+    if (!response.ok) {
+      const error = new Error(`HTTP ${response.status}: ${text.slice(0, 300)}`);
+      error.status = response.status;
+      error.body = text;
+      throw error;
+    }
+    return data;
+  } catch (err) {
+    if (err.name === 'AbortError') {
+      const error = new Error('Request timed out');
+      error.code = 'PROVIDER_TIMEOUT';
+      throw error;
+    }
+    throw err;
+  } finally {
+    clearTimeout(timeout);
   }
+}
 
+// Each provider knows its own endpoint, auth, request shape and how to read the reply text.
+// generateReply() walks this list in order and moves to the next provider on any failure,
+// so one dead/rate-limited/misconfigured key never takes the assistant down.
+const PROVIDERS = [
+  {
+    name: 'groq',
+    envKeys: ['GROQ_API_KEY'],
+    models: ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant'],
+    async call(apiKey, model, messages) {
+      const data = await fetchJson('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 })
+      });
+      return (data?.choices?.[0]?.message?.content || '').trim();
+    }
+  },
+  {
+    name: 'cohere',
+    envKeys: ['COHERE_API_KEY'],
+    models: ['command-r-08-2024', 'command-a-03-2025'],
+    async call(apiKey, model, messages) {
+      const data = await fetchJson('https://api.cohere.com/v2/chat', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 })
+      });
+      const parts = data?.message?.content || [];
+      return parts.map((p) => p.text || '').join('').trim();
+    }
+  },
+  {
+    name: 'openrouter',
+    envKeys: ['OPENROUTER_API_KEY'],
+    models: [
+      process.env.OPENROUTER_MODEL || 'google/gemma-4-26b-a4b-it:free',
+      'openai/gpt-oss-20b:free',
+      'nvidia/nemotron-3-nano-30b-a3b:free',
+      'google/gemma-4-31b-it:free'
+    ].filter((m, i, arr) => arr.indexOf(m) === i),
+    async call(apiKey, model, messages) {
+      const data = await fetchJson('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://artefekt.pl',
+          'X-Title': 'Artefekt asystentka'
+        },
+        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 })
+      });
+      return (data?.choices?.[0]?.message?.content || '').trim();
+    }
+  },
+  {
+    name: 'deepseek',
+    envKeys: ['DEEPSEEK_API_KEY'],
+    models: ['deepseek-chat'],
+    async call(apiKey, model, messages) {
+      const data = await fetchJson('https://api.deepseek.com/chat/completions', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 })
+      });
+      return (data?.choices?.[0]?.message?.content || '').trim();
+    }
+  }
+];
+
+async function generateReply({ message, history = [] }) {
   const cleanMessage = typeof message === 'string' ? message.trim().slice(0, 800) : '';
   if (!cleanMessage) {
     const error = new Error('Message is required');
@@ -84,56 +169,35 @@ async function generateReply({ message, history = [] }) {
     { role: 'user', content: cleanMessage }
   ];
 
-  const models = [
-    process.env.OPENROUTER_MODEL || 'google/gemma-4-26b-a4b-it:free',
-    ...FALLBACK_MODELS
-  ].filter((model, i, arr) => arr.indexOf(model) === i);
-
   let lastError;
-  for (const model of models) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 7000);
-    try {
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://artefekt.pl',
-          'X-Title': 'Artefekt asystentka'
-        },
-        body: JSON.stringify({ model, messages, max_tokens: 260, temperature: 0.55 }),
-        signal: controller.signal
-      });
+  let triedAny = false;
 
-      if (!response.ok) {
-        const details = await response.text();
-        if (response.status === 429 && details.includes('free-models-per-day')) {
-          lastError = new Error('Daily free-tier request limit reached for this API key');
-          lastError.code = 'DAILY_LIMIT';
-          break;
-        }
-        lastError = new Error(`OpenRouter API error ${response.status}: ${details.slice(0, 300)}`);
-        lastError.code = 'OPENAI_ERROR';
-        if (response.status === 429) continue;
-        throw lastError;
-      }
+  for (const provider of PROVIDERS) {
+    const apiKey = provider.envKeys.map((k) => process.env[k]).find(Boolean);
+    if (!apiKey) continue;
 
-      const data = await response.json();
-      const reply = extractOutputText(data);
-      if (reply) return reply;
-      lastError = new Error('Empty model response');
-      lastError.code = 'EMPTY_RESPONSE';
-    } catch (err) {
-      if (err.name === 'AbortError') {
-        lastError = new Error(`Model ${model} timed out`);
-        lastError.code = 'MODEL_TIMEOUT';
-      } else {
+    for (const model of provider.models) {
+      triedAny = true;
+      try {
+        const reply = await provider.call(apiKey, model, messages);
+        if (reply) return reply;
+        const error = new Error(`Empty response from ${provider.name}/${model}`);
+        error.code = 'EMPTY_RESPONSE';
+        lastError = error;
+      } catch (err) {
         lastError = err;
+        if (err.status === 429 && typeof err.body === 'string' && err.body.includes('free-models-per-day')) {
+          lastError.code = 'DAILY_LIMIT';
+          break; // this provider's whole account is capped, no point trying its other models
+        }
       }
-    } finally {
-      clearTimeout(timeout);
     }
+  }
+
+  if (!triedAny) {
+    const error = new Error('Chatbot API is not configured');
+    error.code = 'CHATBOT_NOT_CONFIGURED';
+    throw error;
   }
 
   throw lastError;
