@@ -71,7 +71,7 @@ const serviceRows = document.querySelectorAll('.service-row')
 if (serviceRows.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
   const serviceObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => entry.target.classList.toggle('is-active', entry.isIntersecting))
-  }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 })
+  }, { rootMargin: '-48% 0px -48% 0px', threshold: 0 })
   serviceRows.forEach(row => serviceObserver.observe(row))
 }
 
@@ -133,16 +133,34 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('[data-cover-images]').forEach((item, i) => {
     const covers = item.dataset.coverImages.split(',').map(s => s.trim()).filter(Boolean)
     if (covers.length < 2) return
-    const img = item.querySelector('img')
+    const media = item.querySelector('.gallery-media')
+    const base = media.querySelector('img')
+    const layer = document.createElement('img')
+    layer.className = 'gallery-layer'
+    layer.alt = ''
+    layer.setAttribute('role', 'presentation')
+    layer.decoding = 'async'
+    media.appendChild(layer)
+    covers.forEach(src => { new Image().src = src })
     let index = 0
+    let layerOnTop = false
     setInterval(() => {
       index = (index + 1) % covers.length
-      img.classList.add('is-cycling')
-      setTimeout(() => {
-        img.src = covers[index]
-        img.classList.remove('is-cycling')
-      }, 380)
-    }, 4600 + i * 350)
+      const src = covers[index]
+      const pre = new Image()
+      pre.onload = () => {
+        if (layerOnTop) {
+          base.removeAttribute('srcset')
+          base.src = src
+          layer.style.opacity = '0'
+        } else {
+          layer.src = src
+          layer.style.opacity = '1'
+        }
+        layerOnTop = !layerOnTop
+      }
+      pre.src = src
+    }, 5400 + i * 420)
   })
 }
 lightboxClose?.addEventListener('click', closeLightbox)
