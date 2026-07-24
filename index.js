@@ -280,6 +280,8 @@ chatForm?.addEventListener('submit', async (e) => {
     if (data.reply) {
       appendMessage('assistant', data.reply)
       history.push({ role: 'assistant', content: data.reply })
+    } else if (data.code === 'DAILY_LIMIT') {
+      appendMessage('error', 'Wyczerpaliśmy dzisiejszy limit zapytań do asystentki — spróbuj ponownie jutro albo napisz do nas na studio@artefekt.pl.')
     } else {
       appendMessage('error', 'Asystentka AI będzie dostępna wkrótce — napisz do nas na studio@artefekt.pl.')
     }

@@ -108,6 +108,11 @@ async function generateReply({ message, history = [] }) {
 
       if (!response.ok) {
         const details = await response.text();
+        if (response.status === 429 && details.includes('free-models-per-day')) {
+          lastError = new Error('Daily free-tier request limit reached for this API key');
+          lastError.code = 'DAILY_LIMIT';
+          break;
+        }
         lastError = new Error(`OpenRouter API error ${response.status}: ${details.slice(0, 300)}`);
         lastError.code = 'OPENAI_ERROR';
         if (response.status === 429) continue;
