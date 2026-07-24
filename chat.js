@@ -42,8 +42,9 @@ Pytania kwalifikujące zadawaj po jednym lub dwa: typ inwestycji, lokalizacja, p
 Format odpowiedzi: najpierw odpowiedź, potem najwyżej jedno pytanie. Zwykle od dwóch do sześciu krótkich zdań. Bez presji sprzedażowej.`;
 
 const FALLBACK_MODELS = [
-  'google/gemma-4-31b-it:free',
-  'google/gemma-4-26b-a4b-it:free'
+  'openai/gpt-oss-20b:free',
+  'nvidia/nemotron-3-nano-30b-a3b:free',
+  'google/gemma-4-31b-it:free'
 ];
 
 function extractOutputText(data) {
@@ -91,7 +92,7 @@ async function generateReply({ message, history = [] }) {
   let lastError;
   for (const model of models) {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 9000);
+    const timeout = setTimeout(() => controller.abort(), 7000);
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
