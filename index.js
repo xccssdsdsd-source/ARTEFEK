@@ -86,26 +86,51 @@ let currentImages = []
 let currentIndex = 0
 let currentCaptionBase = ''
 
-function renderLightboxImage() {
-  const src = currentImages[currentIndex]
-  lightboxImg.style.opacity = '0'
-  const img = new Image()
-  img.onload = () => {
-    lightboxImg.src = src
-    lightboxImg.style.opacity = '1'
-  }
-  img.src = src
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+function updateLightboxMeta() {
   lightboxCaption.textContent = currentImages.length > 1
     ? `${currentCaptionBase} — ${currentIndex + 1}/${currentImages.length}`
     : currentCaptionBase
+  lightboxImg.alt = currentCaptionBase
   const hasMultiple = currentImages.length > 1
   lightboxPrev.hidden = !hasMultiple
   lightboxNext.hidden = !hasMultiple
 }
+function renderLightboxImage(dir = 0) {
+  const src = currentImages[currentIndex]
+  if (!dir || prefersReducedMotion) {
+    lightboxImg.style.opacity = '0'
+    const img = new Image()
+    img.onload = () => {
+      lightboxImg.src = src
+      lightboxImg.style.opacity = '1'
+    }
+    img.src = src
+    updateLightboxMeta()
+    return
+  }
+  const outClass = dir > 0 ? 'is-turning-next' : 'is-turning-prev'
+  const inClass = dir > 0 ? 'is-entering-next' : 'is-entering-prev'
+  lightboxImg.classList.remove('is-entering-next', 'is-entering-prev')
+  lightboxImg.classList.add(outClass)
+  const img = new Image()
+  img.onload = () => {
+    setTimeout(() => {
+      lightboxImg.src = src
+      lightboxImg.classList.remove(outClass)
+      lightboxImg.classList.add(inClass)
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        lightboxImg.classList.remove(inClass)
+      }))
+      updateLightboxMeta()
+    }, 240)
+  }
+  img.src = src
+}
 function stepLightbox(dir) {
   if (currentImages.length < 2) return
   currentIndex = (currentIndex + dir + currentImages.length) % currentImages.length
-  renderLightboxImage()
+  renderLightboxImage(dir)
 }
 function openLightbox(btn) {
   lastFocused = document.activeElement
@@ -181,7 +206,7 @@ lightbox?.addEventListener('wheel', (e) => {
   if (wheelLocked || Math.abs(e.deltaY) < 12) return
   wheelLocked = true
   stepLightbox(e.deltaY > 0 ? 1 : -1)
-  setTimeout(() => { wheelLocked = false }, 420)
+  setTimeout(() => { wheelLocked = false }, 760)
 }, { passive: false })
 
 let touchStartY = null
