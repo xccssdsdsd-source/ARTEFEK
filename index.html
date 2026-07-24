@@ -94,42 +94,47 @@ tailwind.config = {
 
   <section id="assistant" class="assistant-section" data-reveal>
     <div class="wrap assistant-wrap">
-      <aside class="team-compact">
+      <div class="assistant-col assistant-col--left">
         <div class="team-compact-photo">
           <img src="assets/team-760.webp" srcset="assets/team-480.webp 480w, assets/team-760.webp 760w" sizes="(max-width:900px) 100vw, 28vw" alt="Alicja Wątroba i Joanna Markiewicz — założycielki studia Artefekt" loading="lazy" />
         </div>
-        <p class="eyebrow eyebrow-dark">Zespół</p>
-        <h3>Ludzie, z którymi porozmawiasz o Twoim wnętrzu</h3>
-        <p class="team-intro">Alicja i Joanna od blisko dwóch dekad projektują wnętrza, które łączą estetykę z realiami wykonawczymi.</p>
+        <div class="team-compact-text">
+          <p class="eyebrow eyebrow-dark">Zespół</p>
+          <h3>Ludzie, z którymi porozmawiasz o Twoim wnętrzu</h3>
+          <p class="team-intro">Alicja i Joanna od blisko dwóch dekad projektują wnętrza, które łączą estetykę z realiami wykonawczymi.</p>
+        </div>
+      </div>
+
+      <div class="assistant-col assistant-col--right">
+        <div class="assistant-intro">
+          <p class="eyebrow eyebrow-dark">Asystent Artefekt.pl</p>
+          <h2>Zadaj mi dowolne pytanie</h2>
+
+          <div class="chat-panel" id="chatPanel">
+            <div class="chat-panel-head">
+              <span class="mac-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+              <div class="chat-msg chat-msg--assistant">Cześć! Zadaj mi dowolne pytanie o proces, usługi lub materiały — chętnie pomogę, a w razie potrzeby umówię kontakt z architektką.</div>
+            </div>
+            <div class="chat-suggest" id="chatSuggest">
+              <button type="button" class="chip" data-prompt="Ile orientacyjnie kosztuje projekt wnętrz mieszkania o powierzchni około 50m²?">Ile kosztuje projekt 50m²?</button>
+              <button type="button" class="chip" data-prompt="Ile trwa cały proces — od pierwszej rozmowy do odbioru gotowego wnętrza?">Ile trwa realizacja?</button>
+              <button type="button" class="chip" data-prompt="Mam małą łazienkę, około 4m² — jakie rozwiązania polecacie?">Mam małą łazienkę</button>
+              <button type="button" class="chip" data-prompt="Chciałbym/chciałabym umówić bezpłatną konsultację — jak to zrobić?">Umów konsultację</button>
+            </div>
+            <form class="chat-form" id="chatForm">
+              <input id="chatInput" class="chat-input" type="text" placeholder="Napisz wiadomość…" autocomplete="off" />
+              <button class="chat-send" type="submit" aria-label="Wyślij wiadomość">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20 20 12 4 4v6l11 2-11 2v6Z"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
         <div class="person-list">
           <div class="person"><h4>Alicja Wątroba</h4><p class="team-role">Architektka wnętrz</p><a href="tel:+48693294393">693 294 393</a></div>
           <div class="person"><h4>Joanna Markiewicz</h4><p class="team-role">Architektka wnętrz</p><a href="tel:+48691222770">691 222 770</a></div>
-        </div>
-      </aside>
-
-      <div class="assistant-intro">
-        <p class="eyebrow eyebrow-dark">Asystent Artefekt.pl</p>
-        <h2>Zadaj mi dowolne pytanie</h2>
-
-        <div class="chat-panel" id="chatPanel">
-          <div class="chat-panel-head">
-            <span class="mac-dots" aria-hidden="true"><span></span><span></span><span></span></span>
-          </div>
-          <div class="chat-messages" id="chatMessages">
-            <div class="chat-msg chat-msg--assistant">Cześć! Zadaj mi dowolne pytanie o proces, usługi lub materiały — chętnie pomogę, a w razie potrzeby umówię kontakt z architektką.</div>
-          </div>
-          <div class="chat-suggest" id="chatSuggest">
-            <button type="button" class="chip" data-prompt="Jak wygląda proces współpracy krok po kroku?">Jak wygląda proces?</button>
-            <button type="button" class="chip" data-prompt="Jakiej usługi potrzebuję do urządzenia jednego pokoju?">Jaką usługę wybrać?</button>
-            <button type="button" class="chip" data-prompt="Chciałbym/chciałabym umówić konsultację, jak to zrobić?">Umów konsultację</button>
-            <button type="button" class="chip" data-prompt="Czym jest showroom „Od próbek do decyzji”?">Co to showroom?</button>
-          </div>
-          <form class="chat-form" id="chatForm">
-            <input id="chatInput" class="chat-input" type="text" placeholder="Napisz wiadomość…" autocomplete="off" />
-            <button class="chat-send" type="submit" aria-label="Wyślij wiadomość">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20 20 12 4 4v6l11 2-11 2v6Z"/></svg>
-            </button>
-          </form>
         </div>
       </div>
     </div>

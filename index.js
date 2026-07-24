@@ -75,6 +75,14 @@ if (serviceRows.length && !window.matchMedia('(prefers-reduced-motion: reduce)')
   serviceRows.forEach(row => serviceObserver.observe(row))
 }
 
+const stepRows = document.querySelectorAll('.steps li')
+if (stepRows.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+  const stepObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => entry.target.classList.toggle('is-active', entry.isIntersecting))
+  }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 })
+  stepRows.forEach(row => stepObserver.observe(row))
+}
+
 const lightbox = document.getElementById('lightbox')
 const lightboxImg = document.getElementById('lightboxImg')
 const lightboxCaption = document.getElementById('lightboxCaption')
