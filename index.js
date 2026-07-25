@@ -174,21 +174,30 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     media.appendChild(layer)
     covers.forEach(src => { new Image().src = src })
     let index = 0
-    let layerOnTop = false
     setInterval(() => {
       index = (index + 1) % covers.length
       const src = covers[index]
       const pre = new Image()
       pre.onload = () => {
-        if (layerOnTop) {
+        layer.style.transition = 'none'
+        layer.style.opacity = '0'
+        layer.style.transform = 'rotate(-6deg) scale(1.06)'
+        layer.src = src
+        void layer.offsetWidth
+        layer.style.transition = ''
+        requestAnimationFrame(() => {
+          layer.style.opacity = '1'
+          layer.style.transform = 'rotate(0deg) scale(1)'
+        })
+        setTimeout(() => {
           base.removeAttribute('srcset')
           base.src = src
+          layer.style.transition = 'none'
           layer.style.opacity = '0'
-        } else {
-          layer.src = src
-          layer.style.opacity = '1'
-        }
-        layerOnTop = !layerOnTop
+          layer.style.transform = 'rotate(-6deg) scale(1.06)'
+          void layer.offsetWidth
+          layer.style.transition = ''
+        }, 1100)
       }
       pre.src = src
     }, 5400 + i * 420)

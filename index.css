@@ -230,7 +230,7 @@ p{line-height:1.7}
 .gallery-item--featured{grid-column:span 2;grid-row:span 1}
 .gallery-media{position:absolute;inset:0;display:block;overflow:hidden}
 .gallery-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;filter:var(--grade);transition:opacity 900ms var(--ease-soft),transform 1200ms var(--ease-out)}
-.gallery-layer{opacity:0}
+.gallery-layer{opacity:0;transform:rotate(-6deg) scale(1.06);transform-origin:50% 50%}
 .gallery-item::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(168,114,68,.06) 0%,rgba(22,17,16,0) 38%,rgba(22,17,16,.72) 100%);pointer-events:none;transition:opacity 420ms var(--ease-out)}
 .gallery-item:focus-visible{outline:1px solid var(--bronze);outline-offset:4px}
 @media (hover:hover) and (pointer:fine){
@@ -340,7 +340,7 @@ p{line-height:1.7}
   .showroom-media:hover img{transform:scale(1.045)}
 }
 
-.testimonials-section{background:linear-gradient(180deg,var(--paper) 0%,var(--paper) 82%,var(--paper-2) 100%);padding:clamp(76px,9vw,116px) 0}
+.testimonials-section{background:linear-gradient(180deg,var(--paper) 0%,var(--paper) 82%,var(--paper-2) 100%);padding:clamp(76px,9vw,116px) 0 clamp(28px,3.4vw,40px)}
 .testimonials-section .section-head{margin-bottom:44px}
 .testimonial-carousel{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent);mask-image:linear-gradient(90deg,transparent,#000 13%,#000 87%,transparent)}
 .testimonial-track{display:flex;gap:0;width:max-content;animation:testimonialScroll 52s linear infinite}
@@ -354,6 +354,23 @@ p{line-height:1.7}
 @keyframes testimonialScroll{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 @media (prefers-reduced-motion:reduce){
   .testimonial-track{animation:none;overflow-x:auto;padding-bottom:12px}
+}
+
+.brands-section{background:var(--paper-2);padding:clamp(24px,3vw,36px) 0 clamp(56px,7vw,88px)}
+.brands-label{text-align:center;font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:0 0 26px}
+.brands-marquee{display:flex;flex-direction:column;gap:26px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.brands-track{display:flex;align-items:center;gap:clamp(36px,5vw,64px);width:max-content}
+.brands-track--a{animation:brandsScrollLeft 42s linear infinite}
+.brands-track--b{animation:brandsScrollRight 42s linear infinite}
+.brands-marquee:hover .brands-track{animation-play-state:paused}
+.brand-mkq{flex-shrink:0;height:44px;display:flex;align-items:center;justify-content:center;opacity:.72;filter:grayscale(1);transition:opacity 220ms var(--ease-out),filter 220ms var(--ease-out),transform 220ms var(--ease-out)}
+.brand-mkq:hover{opacity:1;filter:grayscale(0);transform:translateY(-2px)}
+.brand-mkq img{height:100%;width:auto;max-width:150px;object-fit:contain}
+.brand-mkq--dark img{background:var(--ink-deep);padding:8px 14px;height:calc(100% + 16px)}
+@keyframes brandsScrollLeft{from{transform:translateX(0)}to{transform:translateX(-20%)}}
+@keyframes brandsScrollRight{from{transform:translateX(-20%)}to{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){
+  .brands-track{animation:none;overflow-x:auto}
 }
 
 .contact-section{padding:clamp(76px,9vw,124px) 0;background:var(--paper-2)}
